@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Multi-page template</title>
+		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/jqm-demos.css">
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="shortcut icon" href="../favicon.ico">
+		<script src="scripts/jquery.js"></script>
+		<script src="scripts/index.js"></script>
+		<script src="scripts/custom.js"></script>
+		<script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+    </head>
+    <body>
+        <h2>Heading H2</H2>
+		<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+
+	<div data-role="header">
+        <span class="logo">
+		    <img src="imgs/logo-large.png" alt="">
+        </span>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h3 style="text-align:center;">VALJ DIN ALDERSGRUPP</h3>
+        <ul class="tabs" id="HpTabs">
+            <li>
+                <a href="#two" class="ui-btn" data-transition="slide" data-tabname="8 - 10 år">8 - 10 år</a>
+            </li>
+            <li>
+                <a href="#two" class="ui-btn" data-transition="slide" data-tabname="10 - 13 år">10 - 13 år</a>
+            </li>
+            <li>
+                <a href="#two" class="ui-btn" data-transition="slide" data-tabname="13 - 15 år">13 - 15 år</a>
+            </li>
+            <li class="LäsMer">
+                <a href="#kontakt" class="ui-btn" data-transition="slide" data-tabname="Läs Mer Om Bilda">Läs Mer Om Bilda</a>
+            </li>
+            
+        </ul>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-theme="a" style="display: none;">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- Start of second page: #two -->
+<div data-role="page" id="two" data-theme="a">
+
+	<div data-role="header" class="ui-header-inner" data-position="fixed">
+		<a href="#one" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
+        </a>
+        <h1>
+            <img src="imgs/logo-small.png" style="width: 52px;" alt="">
+        </h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content ui-content-inner">
+		<h1 style="text-align:center;" id="P1Title"></h1>
+        <p class="tidesc">
+            Valkommen! Nedan hittar du alla lektioner for denna aldersgrupp.
+        </p>
+        <ul class="tabs" id="P1Tabs"></ul>
+	</div><!-- /content -->
+
+</div><!-- /page two -->
+
+<!-- Start of second page: #three -->
+<div data-role="page" id="three" data-theme="a">
+
+	<div data-role="header" class="ui-header-inner" data-position="fixed">
+		<a href="#two" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
+        </a>
+        <h1 class="P2Title"></h1>
+        <a href="#three" data-direction="reverse" class="ui-btn ui-btn-b ui-next-btn" data-count="1" data-transition="slide" title="Go back">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <i class="fa fa-angle-right" aria-hidden="true" style="margin-left: -8px;"></i>
+        </a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content ui-content-inner">
+        <h3 class="sub-head">
+            <a href="#upgifter" class="ui-btn" data-transition="slide">
+                GA TILL UPPGIFTER &nbsp;&nbsp; 
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <i class="fa fa-angle-right" aria-hidden="true" style="margin-left: -6px;"></i>
+            </a>
+        </h3>
+        <p class="tidesc">
+            Valkommen! Nedan hittar du alla lektioner for denna aldersgrupp.
+        </p>
+	</div><!-- /content -->
+
+</div><!-- /page three -->
+
+<!-- Start of second page: #upgifter -->
+<div data-role="page" id="upgifter" data-theme="a">
+
+	<div data-role="header" class="ui-header-inner" data-position="fixed">
+		<a href="#three" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
+        </a>
+        <h1 class="P3Title">UPPGIFTER</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content ui-content-inner">
+        <h3 class="P2Title" style="text-align: center;"></h3>
+        <ul class="tabs upg" id="UPGTabs">
+            <li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 1" id="P1Tab-0">Uppgift 1</a></li>
+            <li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 2" id="P1Tab-0">Uppgift 2</a></li>
+            <li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 3" id="P1Tab-0">Uppgift 3</a></li>
+            <li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 4" id="P1Tab-0">Uppgift 4</a></li>
+            <li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 5" id="P1Tab-0">Uppgift 5</a></li>
+            <li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 6" id="P1Tab-0">Uppgift 6</a></li>
+        </ul>
+	</div><!-- /content -->
+
+</div><!-- /page upgifter -->
+
+<!-- Start of second page: #upgifter details -->
+<div data-role="page" id="upgifter-details" data-theme="a">
+
+	<div data-role="header" class="ui-header-inner" data-position="fixed">
+		<a href="#three" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
+        </a>
+        <h1 class="P3Title">UPPGIFT1</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content ui-content-inner">
+        <h3 class="P2Title" style="text-align: center;padding-bottom: 15px;"></h3>
+        <div class="container light">
+            <fieldset class="form-fieldset">
+                <label class="form-label">
+                    Fraga 1: Vad heter hunden i andra kapitlet?
+                </label>
+                <span class="form-control">
+                    <textarea placeholder="Ditt svar..."></textarea>
+                </span>
+            </fieldset> 
+
+            <fieldset class="form-fieldset" style="margin-bottom: 0px;">
+                <label class="form-label">
+                    Fraga 2: Vilka buskar ska man akta sig for?
+                </label>
+                <span class="form-control">
+                    <textarea style="margin-bottom: 0px;" placeholder="Ditt svar..."></textarea>
+                </span>
+            </fieldset>    
+        </div>
+
+        <div class="container">
+            <fieldset class="form-fieldset">
+                <label class="form-label">
+                    Skicka svaren till din larare:
+                </label>
+                <span class="form-control">
+                    <input type="text" placeholder="Ditt for-och efternam">
+                </span>
+                <span class="form-control">
+                    <input type="text" placeholder="Ditt personnummer">
+                </span>
+                <span class="form-control">
+                    <input type="email" placeholder="Din email">
+                </span>
+                <span class="form-control">
+                    <input type="email" placeholder="Skriv lararens email">
+                </span>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+                <span class="form-control">
+                    <a href="#upgift-sub" class="ui-btn" data-transition="slide">Skicka</a>
+                </span>
+            </fieldset>    
+        </div>
+        
+	</div><!-- /content -->
+
+</div><!-- /page #upgifter details -->
+
+<!-- Start of second page: #upgifter details sub -->
+<div data-role="page" id="upgift-sub" data-theme="a">
+
+	<div data-role="header" class="ui-header-inner" data-position="fixed">
+		<a href="#upgifter-details" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
+        </a>
+        <h1 class="P3Title">UPPGIFT INSKICKAD</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content ui-content-inner">
+		<h1 style="text-align:center;" id="P1Title"></h1>
+        <h3 style="text-align:center;">TACK!</h3>
+        <p class="tidesc" style="font-size: 24px; line-height: 30px;">
+            Vi skickar dina svar till din larare och du far en kopia pa din mail.
+        </p>
+        <p class="tidesc" style="font-size: 24px; line-height: 30px;">
+            Vill du skicka fler kopior?
+        </p>
+        <div class="container">
+            <fieldset class="form-fieldset">
+                <span class="form-control">
+                    <input type="email" placeholder="Email">
+                </span>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+                <span class="form-control">
+                    <a href="#" class="ui-btn">Skicka</a>
+                </span>
+            </fieldset>    
+        </div>
+	</div><!-- /content -->
+
+</div><!-- /page #upgifter details sub -->
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="kontakt">
+
+	<div data-role="header">
+        <a href="#one" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
+        </a>
+        <h1 class="logo">
+		    <img src="imgs/logo-kontact.png" alt="" style="width:70%;">
+        </span>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content ui-content-inner">
+		<div class="container" style="padding: 25px;">
+            <h3 style="font-size: 24px;">KONTAKT</h3>
+            <p class="tidesc" style="font-size: 24px; line-height: 30px; text-align:left; padding-left: 0px; margin-top: 0px;">
+                Tel: +46 739965401<br>
+                Address Huvudkontor:<br>
+                Malmsjovagen 8b<br>
+                147 63 Uttran
+            </p>
+
+            <h1 style="font-size: 36px !important;">OM BILDA</h1>
+            <p class="tidesc" style="font-size: 24px; line-height: 30px; text-align:left; padding-left: 0px; margin-top: 5px;">
+                Text About us...
+            </p>
+        </div>        
+	</div><!-- /content -->
+</div><!-- /page one -->
+    </body>
+</html>
