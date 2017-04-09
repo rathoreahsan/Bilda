@@ -193,3 +193,20 @@ html head+body .ui-body-a.ui-focus {
     box-shadow: none !important;
 
 }
+.lessonParagraph
+{
+    padding-bottom: 15px; 
+    padding-left:10px; 
+    padding-right:10px;
+    text-align: center;
+}
+.lessonImage{
+    padding-left:10px; 
+    padding-right:10px;
+    padding-top:10px; 
+    padding-bottom: 10px; 
+    width:95%; 
+    display:block;
+    text-align: center;
+    position: relative;
+}

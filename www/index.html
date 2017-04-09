@@ -14,42 +14,43 @@
 		<script src="scripts/jquery.mobile-1.4.5.min.js"></script>
     </head>
     <body>
-		<!-- Start of first page: #one -->
+		<!-- Start of Agegroup page: #one -->
+		<!-- Display all age groups -->
 		<div data-role="page" id="one">
-
 			<div data-role="header">
 				<span class="logo">
 					<img src="imgs/logo-large.png" alt="">
 				</span>
-			</div><!-- /header -->
+			</div>
 
 			<div role="main" class="ui-content">
 				<h3 style="text-align:center;">VALJ DIN ALDERSGRUPP</h3>
 				<ul class="tabs" id="HpTabs">
 					<li>
-						<a href="#two" class="ui-btn" data-transition="slide" data-tabname="8 - 10 år">8 - 10 år</a>
+						<a id="1" href="#two" class="agegroup ui-btn" data-transition="slide" data-tabname="8 - 10 år">8 - 10 år</a>
 					</li>
 					<li>
-						<a href="#two" class="ui-btn" data-transition="slide" data-tabname="10 - 13 år">10 - 13 år</a>
+						<a id="2" href="#two" class="agegroup ui-btn" data-transition="slide" data-tabname="10 - 13 år">10 - 13 år</a>
 					</li>
 					<li>
-						<a href="#two" class="ui-btn" data-transition="slide" data-tabname="13 - 15 år">13 - 15 år</a>
+						<a id="3" href="#two" class="agegroup ui-btn" data-transition="slide" data-tabname="13 - 15 år">13 - 15 år</a>
 					</li>
 					<li class="LäsMer">
-						<a href="#kontakt" class="ui-btn" data-transition="slide" data-tabname="Läs Mer Om Bilda">Läs Mer Om Bilda</a>
+						<a id="0" href="#kontakt" class="ui-btn " data-transition="slide" data-tabname="Läs Mer Om Bilda">Läs Mer Om Bilda</a>
 					</li>
 					
-				</ul>
-			</div><!-- /content -->
+				</ul>				
+			</div>
 
 			<div data-role="footer" data-theme="a" style="display: none;">
 				<h4>Page Footer</h4>
-			</div><!-- /footer -->
-		</div><!-- /page one -->
-
-		<!-- Start of second page: #two -->
-		<div data-role="page" id="two" data-theme="a">
-
+			</div>
+		</div>
+							
+		<!-- Start of Lesson page: #two -->
+		<!-- Display all lesson based on Id of agegroup selected -->
+		<div data-role="page" id="two" data-theme="a">			
+			<!-- header -->
 			<div data-role="header" class="ui-header-inner" data-position="fixed">
 				<a href="#one" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
 					<i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -58,36 +59,32 @@
 				<h1>
 					<img src="imgs/logo-small.png" style="width: 52px;" alt="">
 				</h1>
-			</div><!-- /header -->
-
-			<div role="main" class="ui-content ui-content-inner">
-				<h1 style="text-align:center;" id="P1Title"></h1>
+			</div>
+			<!-- Main Contetnt -->
+			<div role="main" class="ui-content ui-content-inner">				
+				<h1 style="text-align:center;" id="LessonTitle"></h1>
 				<p class="tidesc">
 					Valkommen! Nedan hittar du alla lektioner for denna aldersgrupp.
 				</p>
-				<ul class="tabs" id="P1Tabs"></ul>
-			</div><!-- /content -->
+				<ul class="LessonTab tabs" id="LessonTab"></ul>
+			</div>
+		</div>
 
-		</div><!-- /page two -->
-
-		<!-- Start of third page: #three -->
+		<!-- Start of Lesson Detail Page: #three -->
+		<!-- Display the lesson detail based on lesson ID -->
 		<div data-role="page" id="three" data-theme="a">
-
+			<!-- header -->
 			<div data-role="header" class="ui-header-inner" data-position="fixed">
 				<a href="#two" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
 					<i class="fa fa-angle-left" aria-hidden="true"></i>
 					<i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
-				</a>
-				<h1 class="P2Title"></h1>
-				<a href="#three" data-direction="reverse" class="ui-btn ui-btn-b ui-next-btn" data-count="1" data-transition="slide" title="Go back">
-					<i class="fa fa-angle-right" aria-hidden="true"></i>
-					<i class="fa fa-angle-right" aria-hidden="true" style="margin-left: -8px;"></i>
-				</a>
-			</div><!-- /header -->
-
-			<div role="main" class="ui-content ui-content-inner">
+				</a>			
+				<h1 style="text-align:center;"  class="LessonName"></h1>
+			</div>
+			<!-- Main Contetnt -->
+			<div role="main" class="ui-content ui-content-inner">				
 				<h3 class="sub-head">
-					<a href="#upgifter" class="ui-btn" data-transition="slide">
+					<a href="#upgifter" class="ui-btn lessonIdhw" data-transition="slide">
 						GA TILL UPPGIFTER &nbsp;&nbsp; 
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 						<i class="fa fa-angle-right" aria-hidden="true" style="margin-left: -6px;"></i>
@@ -96,13 +93,12 @@
 				<p class="tidesc">
 					Valkommen! Nedan hittar du alla lektioner for denna aldersgrupp.
 				</p>
-			</div><!-- /content -->
-
-		</div><!-- /page three -->
-
+				<ul class="tabs" id="LessonContent"></ul>
+			</div>
+		</div>
+		<!-- Show the list of homework questions for selected lesson Id -->
 		<!-- Start of fourth page: #upgifter -->
 		<div data-role="page" id="upgifter" data-theme="a">
-
 			<div data-role="header" class="ui-header-inner" data-position="fixed">
 				<a href="#three" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
 					<i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -114,12 +110,12 @@
 			<div role="main" class="ui-content ui-content-inner">
 				<h3 class="P2Title" style="text-align: center;"></h3>
 				<ul class="tabs upg" id="UPGTabs">
-					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 1" id="P1Tab-0">Uppgift 1</a></li>
+					<!--<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 1" id="P1Tab-0">Uppgift 1</a></li>
 					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 2" id="P1Tab-0">Uppgift 2</a></li>
 					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 3" id="P1Tab-0">Uppgift 3</a></li>
 					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 4" id="P1Tab-0">Uppgift 4</a></li>
 					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 5" id="P1Tab-0">Uppgift 5</a></li>
-					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 6" id="P1Tab-0">Uppgift 6</a></li>
+					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 6" id="P1Tab-0">Uppgift 6</a></li>-->
 				</ul>
 			</div><!-- /content -->
 
@@ -255,5 +251,6 @@
 				</div>        
 			</div><!-- /content -->
 		</div><!-- /page one -->
+		
     </body>
 </html>

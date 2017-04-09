@@ -1,51 +1,122 @@
 $(function(){
 
-    $('#HpTabs li a:not(".LäsMer")').on('tap', function(){
+    //Some global vaiables
+    var ageId = "";
+    var lessonId = "";
+    var serverUrl = "http://localhost/SSK/";
+    var apiUrl_GetLessonsByAgeId = 'http://localhost/SSK/api/SSK/GetLessonsByAgeId';
+    var apiUrl_GetLessonDetailByID = 'http://localhost/SSK/api/SSK/GetLessonDetailByID';
+    var apiUrl_GetHomeworksByLessonID = 'http://localhost/SSK/api/SSK/GetHomeworksByLessonID';
+    
+    // Agegroup button tab handler
+    // Load the lesson list based on agegroup ID
+    $(".agegroup").on("tap", function(){ 
+        //alert("Agegroup button is touch."); 
         var title = $(this).data('tabname');
-        $('#P1Title').text(title);
+        $('#LessonTitle').text(title);  
+        ageId = "";  
+        ageId = $(this).attr('id');
 
-        $.getJSON("data/Page1Data.json", function(info) {
-            var li = "";
-            $.each(info, function (i, obj) {
-                if(i === title) {
-                    $.each(obj, function (i, name) {
-                        $("#P1Tabs").empty();
-                        li += '<li><a href="#three" onclick="P1TabClick(this);" class="ui-btn" data-transition="slide" data-pagetitle="' + title + '" data-tabname="' + name.Title + '" id="P1Tab-' + i + '">' + name.Title + '</a></li>';                       
-                        $("#P1Tabs").append(li);
-                    });
-                   return false; 
-                }
+        //Call AJAX
+        if(parseInt(ageId) >= 1)
+        {
+            $.getJSON(apiUrl_GetLessonsByAgeId + "/" + ageId, function(info) {
+                var li = "";
+                $.each(info, function (i, obj) {
+                    if(i === "Table") {
+                        $.each(obj, function (i, value) {
+                            $("#LessonTab").empty();
+                            li += '<li><a  href="#three" class="lessonItem ui-btn" data-transition="slide" data-pagetitle="' + value.Name + '" data-tabname="' + value.Name + '" id="' + value.ID + '">' + value.Name + '</a></li>';                       
+                            $("#LessonTab").append(li);
+                        });
+                        return false; 
+                    }
+                });
+            });           
+        }
+    });
+
+   /* $(".LessonTab").on("tap", "a", function(event){ 
+        event.preventDefault();
+        var lessontitle = $(this).data('tabname');
+        alert(lessontitle);
+    });*/
+
+    // Lesson tap handler
+    // Load the Homeworks list based on Lesson ID
+     $(".LessonTab").on("tap", "a", function(event){ 
+
+        var lessontitle = $(this).data('tabname');
+        $('.LessonName').text(lessontitle);
+        lessonId = "";
+        lessonId = $(this).attr('id');          // Get the selected lesson ID
+        $(".lessonIdhw").attr("id", lessonId);  //Set the Lesson ID for open Homeworks
+        $("#LessonContent").empty();            // Clean the UL before loading
+        //Call AJAX
+        if(parseInt(lessonId) >= 1)
+        {
+            $.getJSON(apiUrl_GetLessonDetailByID + "/" + lessonId, function(info) {
+                var li = "";
+                $.each(info, function (i, obj) {
+                    if(i === "Table") {
+                        $.each(obj, function (i, value) {
+                            $("#LessonContent").empty();
+                            var imgpath = value.ImageUrl; 
+                            if (imgpath.indexOf("AttachedDocuments") >= 0) 
+                            {
+                                imgpath = imgpath.substring(imgpath.indexOf("AttachedDocuments"), imgpath.length);
+                                imgpath = serverUrl +imgpath; 
+                            }
+                            if(imgpath.length > 0){
+                                li += '<li><p class="lessonParagraph">' + value.Text + '</p><img class="lessonImage" src="'+ imgpath +'" alt="'+value.ImageName +'"/></li>';                       
+                            }else{
+                                li += '<li><p class="lessonParagraph">' + value.Text + '</p></li>';                       
+                            }
+                           
+                            $("#LessonContent").append(li);
+                        });
+                        return false; 
+                    }
+                });
+            });           
+        }        
+    });
+    
+    $('.lessonIdhw').on('tap', function(){
+        //alert($(this).attr("id"));
+        lessonId = $(this).attr("id");
+        $("#UPGTabs").empty();            // Clean the UL before loading
+        if(parseInt(ageId) >= 1)
+        {
+            $.getJSON(apiUrl_GetHomeworksByLessonID + "/" + lessonId, function(info) {
+                var li = "";
+                $.each(info, function (i, obj) {
+                    if(i === "Table") {
+                        $.each(obj, function (i, value) {
+                            $("#UPGTabs").empty();
+                            li += '<li><a  href="#upgifter-details" class="questionItem ui-btn" data-transition="slide" data-pagetitle="' + value.Name + '" data-tabname="' + value.Name + '" id="' + value.ID + '">' + value.Name + '</a></li>';                       
+                            $("#UPGTabs").append(li);
+                        });
+                        return false; 
+                    }
+                });
             });
-        });
+        }
     });
 
     $('.ui-next-btn').on('tap', function(){
         var DivID = $(this).attr('href');
          $(DivID).find('#P1Title').text(title);
-
-        // $.getJSON("data/Page1Data.json", function(info) {
-        //     var li = "";
-        //     $.each(info, function (i, obj) {
-        //         if(i === title) {
-        //             $.each(obj, function (i, name) {
-        //                 $("#P1Tabs").empty();
-        //                 li += '<li><a href="#three" onclick="P1TabClick(this);" class="ui-btn" data-transition="slide" data-pagetitle="' + title + '" data-tabname="' + name.Title + '" id="P1Tab-' + i + '">' + name.Title + '</a></li>';                       
-        //                 $("#P1Tabs").append(li);
-        //             });
-        //            return false; 
-        //         }
-        //     });
-        // });
-    });
-
-
+    });  
 });
 
-function P1TabClick(el) {
+ 
+// Lesson tap handler
+//function LessonClick(el) {
 
-
-    var title = $(el).data('tabname');
-    $('.P2Title').text(title);
+  //  var title = $(el).data('tabname');
+  //  $('.P2Title').text(title);
+//    $(el).text($(el).attr("id"));
 
 //     var newPage = '<div data-role="page" id="three" data-theme="a">' +
     
@@ -80,7 +151,7 @@ function P1TabClick(el) {
 
     //debugger;
     
-}
+//}
 
 // $.ajaxStart(function() {
 //     $("img#loading").show();
