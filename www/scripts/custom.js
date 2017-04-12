@@ -3,11 +3,13 @@ $(function(){
     //Some global vaiables
     var ageId = "";
     var lessonId = "";
-    var serverUrl = "http://localhost/SSK/";
-    var apiUrl_GetLessonsByAgeId = 'http://localhost/SSK/api/SSK/GetLessonsByAgeId';
-    var apiUrl_GetLessonDetailByID = 'http://localhost/SSK/api/SSK/GetLessonDetailByID';
-    var apiUrl_GetHomeworksByLessonID = 'http://localhost/SSK/api/SSK/GetHomeworksByLessonID';
-    
+    var lessonName = ""; //Store the selected lesson name in this
+    var serverUrl = "http://konsultrum.net";
+    var apiUrl_GetLessonsByAgeId = 'http://konsultrum.net/api/SSK/GetLessonsByAgeId';
+    var apiUrl_GetLessonDetailByID = 'http://konsultrum.net/api/SSK/GetLessonDetailByID';
+    var apiUrl_GetHomeworksByLessonID = 'http://konsultrum.net/api/SSK/GetHomeworksByLessonID';
+    var apiUrl_GetQuestionsByHomeworkID = 'http://konsultrum.net/api/SSK/GetQuestionsByHomeworkID';
+
     // Agegroup button tab handler
     // Load the lesson list based on agegroup ID
     $(".agegroup").on("tap", function(){ 
@@ -36,18 +38,12 @@ $(function(){
         }
     });
 
-   /* $(".LessonTab").on("tap", "a", function(event){ 
-        event.preventDefault();
-        var lessontitle = $(this).data('tabname');
-        alert(lessontitle);
-    });*/
-
     // Lesson tap handler
     // Load the Homeworks list based on Lesson ID
      $(".LessonTab").on("tap", "a", function(event){ 
 
-        var lessontitle = $(this).data('tabname');
-        $('.LessonName').text(lessontitle);
+        lessonName = $(this).data('tabname');
+        $('.LessonName').text(lessonName);
         lessonId = "";
         lessonId = $(this).attr('id');          // Get the selected lesson ID
         $(".lessonIdhw").attr("id", lessonId);  //Set the Lesson ID for open Homeworks
@@ -71,8 +67,7 @@ $(function(){
                                 li += '<li><p class="lessonParagraph">' + value.Text + '</p><img class="lessonImage" src="'+ imgpath +'" alt="'+value.ImageName +'"/></li>';                       
                             }else{
                                 li += '<li><p class="lessonParagraph">' + value.Text + '</p></li>';                       
-                            }
-                           
+                            }                           
                             $("#LessonContent").append(li);
                         });
                         return false; 
@@ -82,9 +77,12 @@ $(function(){
         }        
     });
     
+    //Lesson Detail tap handler
+    //Load all the questions based on lessonId
     $('.lessonIdhw').on('tap', function(){
-        //alert($(this).attr("id"));
+        //alert($('.LessonName').attr("text"));
         lessonId = $(this).attr("id");
+        $('.homeworkTitle').text(lessonName);
         $("#UPGTabs").empty();            // Clean the UL before loading
         if(parseInt(ageId) >= 1)
         {
@@ -104,11 +102,57 @@ $(function(){
         }
     });
 
+
+    //Question Detail tap handler
+    //Load all the questions based on Question Id
+     $("#UPGTabs").on("tap", "a", function(event){ 
+        
+        $('#divStudentInfo').hide();
+        $('#divQuestion').hide();
+        $('.qLessonTitle').text(lessonName);
+        var qid = $(this).attr("id");        
+        $("#divQuestion").empty();
+        if(parseInt(qid) >= 1)
+        {
+            $.getJSON(apiUrl_GetQuestionsByHomeworkID + "/" + qid, function(info) {
+                
+                $.each(info, function (i, obj) {
+                    if(i === "Table") {
+                        var li = "";
+                        if(obj.length == 0) //If no question 
+                        {
+                          return;   
+                        }
+                        else //If question then load them
+                        {
+                            $.each(obj, function (i, value) {
+                                li = "";
+                                li += '<fieldset class="form-fieldset"><label class="form-label">'+ value.Text +'</label><span class="form-control"><textarea class="txtAnswer" placeholder="Ditt svar..." id="'+ value.ID +'"></textarea></span></fieldset>';
+                                $("#divQuestion").append(li);
+                                //after loading show the question and studentinfo divs
+                                $('#divStudentInfo').show();
+                                $('#divQuestion').show();
+                            });
+                        }
+                        return false; 
+                    }
+                });
+            });
+        }
+    });
+
+    //Submit the answer by the student
+    $('.submitBtn').on("tap",function(event){
+
+        alert(' --------- submit --------- ');
+    });
+
     $('.ui-next-btn').on('tap', function(){
         var DivID = $(this).attr('href');
          $(DivID).find('#P1Title').text(title);
     });  
 });
+
 
  
 // Lesson tap handler
