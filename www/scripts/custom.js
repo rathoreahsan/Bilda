@@ -12,7 +12,7 @@ $(function(){
     var ageId = "";
     var lessonId = "";
     var lessonName = ""; //Store the selected lesson name in this
-    var serverUrl = "http://konsultrum.net";
+    var serverUrl = "http://konsultrum.net/";
     var apiUrl_GetLessonsByAgeId = 'http://konsultrum.net/api/SSK/GetLessonsByAgeId';
     var apiUrl_GetLessonDetailByID = 'http://konsultrum.net/api/SSK/GetLessonDetailByID';
     var apiUrl_GetHomeworksByLessonID = 'http://konsultrum.net/api/SSK/GetHomeworksByLessonID';
@@ -28,12 +28,15 @@ $(function(){
         ageId = $(this).attr('id');
         // Clean the lesson tab before calling
         $("#LessonTab").empty();
+        $('#pTest').empty();
         //Call AJAX
         if(parseInt(ageId) >= 1)
         {
+            $('#pTest').append('Before Ajax');
             $.getJSON(apiUrl_GetLessonsByAgeId + "/" + ageId, function(info) {
                 var li = "";
                 $.each(info, function (i, obj) {
+                    $('#pTest').append('Ajax result.');
                     if(i === "Table") {
                         $.each(obj, function (i, value) {
                             $("#LessonTab").empty();
@@ -43,7 +46,8 @@ $(function(){
                         return false; 
                     }
                 });
-            });           
+            });  
+            $('#pTest').append('After Ajax.');         
         }
     });
 

@@ -1,17 +1,22 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="se.konsultrum.bilda" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>SSK</name>
+<widget id="se.konsultrum.bilda" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    
+	<name>SSK</name>
+	
     <description>
         Online education application for the children of age between 8 to 15 years.
     </description>
+	
     <author email="tahirazeemalvi@gmail.com" href="http://konsultrum.se">
         Konsultrum Mobile Development Team
     </author>
+	
     <content src="index.html" />
-    <access origin="*" />
-	<access uri="*"/>
+    
+	<preference name="phonegap-version" value="cli-6.5.0" />
 	<preference name="orientation" value="portrait" />
 	<plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
+	
 	<platform name="android">
         <icon density="ldpi" src="www/Icons/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/Icons/android/drawable-mdpi-icon.png" />
@@ -39,6 +44,13 @@
         <icon height="76" platform="ios" src="www/Icon/ios/icon-App-76x76@1x.png" width="76" />
         <icon height="152" platform="ios" src="www/Icon/ios/icon-App-76x76@2x.png" width="152" />  
     </platform>
+	
+	<plugin name="cordova-plugin-whitelist" version="1" />
+	<access origin="*" />
+	<access uri="*"/>
+	<allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+	
 	<platform name="android">
         <allow-intent href="market:*" />
     </platform>
