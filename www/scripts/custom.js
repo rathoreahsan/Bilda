@@ -28,7 +28,7 @@ $(function(){
         ageId = $(this).attr('id');
         // Clean the lesson tab before calling
         $("#LessonTab").empty();
-        $('#pTest').empty();
+        //$('#pTest').empty();
         //Call AJAX
         if(parseInt(ageId) >= 1)
         {
@@ -36,7 +36,7 @@ $(function(){
             $.getJSON(apiUrl_GetLessonsByAgeId + "/" + ageId, function(info) {
                 var li = "";
                 $.each(info, function (i, obj) {
-                    $('#pTest').append('Ajax result.');
+                    //$('#pTest').append('Ajax result.');
                     if(i === "Table") {
                         $.each(obj, function (i, value) {
                             $("#LessonTab").empty();
@@ -47,7 +47,7 @@ $(function(){
                     }
                 });
             });  
-            $('#pTest').append('After Ajax.');         
+            //$('#pTest').append('After Ajax.');         
         }
     });
 
