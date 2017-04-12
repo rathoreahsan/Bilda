@@ -13,6 +13,7 @@
 		<script src="scripts/custom.js"></script>
 		<script src="scripts/jquery.mobile-1.4.5.min.js"></script>
     </head>
+
     <body>
 		<!-- Start of Agegroup page: #one -->
 		<!-- Display all age groups -->
@@ -96,91 +97,70 @@
 				<ul class="tabs" id="LessonContent"></ul>
 			</div>
 		</div>
+
 		<!-- Show the list of homework questions for selected lesson Id -->
 		<!-- Start of fourth page: #upgifter -->
 		<div data-role="page" id="upgifter" data-theme="a">
+			<!-- /header -->
 			<div data-role="header" class="ui-header-inner" data-position="fixed">
 				<a href="#three" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
 					<i class="fa fa-angle-left" aria-hidden="true"></i>
 					<i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
 				</a>
 				<h1 class="P3Title">UPPGIFTER</h1>
-			</div><!-- /header -->
-
+			</div>
+			<!-- /content -->
 			<div role="main" class="ui-content ui-content-inner">
-				<h3 class="P2Title" style="text-align: center;"></h3>
+				<h3 class="homeworkTitle" style="text-align: center;"></h3>
 				<ul class="tabs upg" id="UPGTabs">
-					<!--<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 1" id="P1Tab-0">Uppgift 1</a></li>
-					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 2" id="P1Tab-0">Uppgift 2</a></li>
-					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 3" id="P1Tab-0">Uppgift 3</a></li>
-					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 4" id="P1Tab-0">Uppgift 4</a></li>
-					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 5" id="P1Tab-0">Uppgift 5</a></li>
-					<li><a href="#upgifter-details" class="ui-btn" data-transition="slide" data-pagetitle="8 - 10 ar" data-tabname="Uppgift 6" id="P1Tab-0">Uppgift 6</a></li>-->
 				</ul>
-			</div><!-- /content -->
+			</div>
+		</div>
 
-		</div><!-- /page upgifter -->
-
+		<!-- Display the homework questions details -->			
 		<!-- Start of fifth page: #upgifter details -->
 		<div data-role="page" id="upgifter-details" data-theme="a">
-
+			<!-- header -->
 			<div data-role="header" class="ui-header-inner" data-position="fixed">
-				<a href="#three" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
+				<a href="#upgifter" data-direction="reverse" class="ui-btn ui-btn-b" data-transition="slide" title="Go back">
 					<i class="fa fa-angle-left" aria-hidden="true"></i>
 					<i class="fa fa-angle-left" aria-hidden="true" style="margin-left: -8px;"></i>
 				</a>
 				<h1 class="P3Title">UPPGIFT1</h1>
-			</div><!-- /header -->
+			</div>
 
+			<!-- content -->
 			<div role="main" class="ui-content ui-content-inner">
-				<h3 class="P2Title" style="text-align: center;padding-bottom: 15px;"></h3>
-				<div class="container light">
-					<fieldset class="form-fieldset">
-						<label class="form-label">
-							Fraga 1: Vad heter hunden i andra kapitlet?
-						</label>
-						<span class="form-control">
-							<textarea placeholder="Ditt svar..."></textarea>
-						</span>
-					</fieldset> 
+				<h3 class="qLessonTitle" style="text-align: center;padding-bottom: 15px;"></h3>
+				<div id="divQuestion" class="container light"></div>
 
-					<fieldset class="form-fieldset" style="margin-bottom: 0px;">
-						<label class="form-label">
-							Fraga 2: Vilka buskar ska man akta sig for?
-						</label>
-						<span class="form-control">
-							<textarea style="margin-bottom: 0px;" placeholder="Ditt svar..."></textarea>
-						</span>
-					</fieldset>    
-				</div>
-
-				<div class="container">
+				<div id="divStudentInfo" class="container">
 					<fieldset class="form-fieldset">
 						<label class="form-label">
 							Skicka svaren till din larare:
 						</label>
 						<span class="form-control">
-							<input type="text" placeholder="Ditt for-och efternam">
+							<input id="studentName" type="text" placeholder="Ditt for-och efternam" maxlength="49"><!-- Your first and last name -->
 						</span>
 						<span class="form-control">
-							<input type="text" placeholder="Ditt personnummer">
+							<input id="studentSSN" type="text" placeholder="Ditt personnummer"><!-- Your person number/SSN -->
 						</span>
 						<span class="form-control">
-							<input type="email" placeholder="Din email">
+							<input id="studentEmail" type="email" placeholder="Din email"><!-- Your email -->
 						</span>
 						<span class="form-control">
-							<input type="email" placeholder="Skriv lararens email">
+							<input id="studentEmail" type="email" placeholder="skriv in lärarens email"> <!-- Your teacher email -->
 						</span>
 					</fieldset>
 
 					<fieldset class="form-fieldset">
 						<span class="form-control">
-							<a href="#upgift-sub" class="ui-btn" data-transition="slide">Skicka</a>
+							<a href="#upgift-sub" class="submitBtn ui-btn" data-transition="slide">Skicka</a>
 						</span>
 					</fieldset>    
 				</div>
 				
-			</div><!-- /content -->
+			</div>
 
 		</div><!-- /page #upgifter details -->
 

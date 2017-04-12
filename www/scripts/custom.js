@@ -1,4 +1,12 @@
 $(function(){
+    // To Show the Progress Bar before each AJAX Call
+    $(document).ajaxStart(function() {
+        $.mobile.loading('show');
+    });
+    // Hide the Progress Bar when ajaxComplete
+    $(document).ajaxStop(function() {
+        $.mobile.loading('hide');
+    });
 
     //Some global vaiables
     var ageId = "";
@@ -18,7 +26,8 @@ $(function(){
         $('#LessonTitle').text(title);  
         ageId = "";  
         ageId = $(this).attr('id');
-
+        // Clean the lesson tab before calling
+        $("#LessonTab").empty();
         //Call AJAX
         if(parseInt(ageId) >= 1)
         {
@@ -112,6 +121,7 @@ $(function(){
         $('.qLessonTitle').text(lessonName);
         var qid = $(this).attr("id");        
         $("#divQuestion").empty();
+
         if(parseInt(qid) >= 1)
         {
             $.getJSON(apiUrl_GetQuestionsByHomeworkID + "/" + qid, function(info) {
@@ -126,6 +136,7 @@ $(function(){
                         else //If question then load them
                         {
                             $.each(obj, function (i, value) {
+                                
                                 li = "";
                                 li += '<fieldset class="form-fieldset"><label class="form-label">'+ value.Text +'</label><span class="form-control"><textarea class="txtAnswer" placeholder="Ditt svar..." id="'+ value.ID +'"></textarea></span></fieldset>';
                                 $("#divQuestion").append(li);
