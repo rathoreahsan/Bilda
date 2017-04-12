@@ -195,8 +195,8 @@ if ( location.protocol.substr(0,4)  === 'file' ||
 		isLocal: true
 	}).error(function() {
 		// Ajax doesn't work so turn it off
-		/*$( document ).on( "mobileinit", function() {
-			$.mobile.ajaxEnabled = false;
+		$( document ).on( "mobileinit", function() {
+		//	$.mobile.ajaxEnabled = false;
 
 			var message = $( '<div>' , {
 				'class': "jqm-content",
@@ -211,7 +211,7 @@ if ( location.protocol.substr(0,4)  === 'file' ||
 			$( document ).on( "pagecreate", function( event ) {
 				$( event.target ).append( message );
 			});
-		});*/
+		});
 	});
 }
 
